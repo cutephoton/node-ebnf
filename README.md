@@ -24,6 +24,32 @@ let w3cParser = new Grammars.W3C.Parser(railRoadGeneratorGrammar);
 
 [**Check out the test folder for more examples**](https://github.com/menduz/node-ebnf/tree/master/test)
 
+## Offline Parser Builders
+
+### Original simple builder:
+```
+ebnf Grammar.ebnf >> myFile.js
+```
+
+### Extended Builder
+
+The extended builder supports some additional options. Supports typescript
+output and plain javascript mode (based on extension).
+
+```
+ebnf-builder
+    [--grammar bnf|w3c-ebnf|custom]
+    [--logs 'v'|'verbose'|'d'|'debug']
+    [--export 'rules'|jsSymbolName]
+    --embed-source
+    [input] [output.js|ts|tsx]
+```
+
+Options:
+  * --grammar: The grammar backend. The default mode is 'custom'.
+  * --export: The Javascript Symbol to be exported.
+  * --embed-source: Embed the original EBNF input in to the script.
+
 ## BNF Equation example
 
 In this example we use plain BNF to create a simple integer formula parser
