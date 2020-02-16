@@ -4,7 +4,10 @@
   "description": "Creates an AST parser from a [E]BNF file",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
-  "bin": "dist/bin.js",
+  "bin": {
+    "ebnf" : "dist/bin.js",
+    "ebnf-builder" : "dist/builder.js"
+  },
   "scripts": {
     "test": "mocha --reporter spec",
     "test-travis": "npm run lint && npm run build && npm run coverage && npm run test",
@@ -12,8 +15,14 @@
     "coverage": "(`npm bin`/istanbul cover `npm bin`/_mocha || true)",
     "lint": "tslint -t msbuild src/**/*.ts",
     "build": "rm -rf dist && tsc -p tsconfig.json && tsc -p tsconfig-test.json && chmod +x dist/bin.js",
-    "watch": "npm run build && chmod +x dist/bin.js && (tsc -p tsconfig.json --watch & tsc -p tsconfig-test.json --watch)"
+    "watch": "npm run build && chmod +x dist/bin.js && (tsc -p tsconfig.json --watch & tsc -p tsconfig-test.json --watch)",
+    "pack": "npm pack"
   },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/menduz/node-ebnf.git"
@@ -37,12 +46,13 @@
   },
   "homepage": "https://github.com/menduz/node-ebnf#readme",
   "devDependencies": {
-    "coveralls": "^3.0.0",
+    "coveralls": "^3.0.9",
     "expect": "^24.9.0",
     "istanbul": "^0.4.5",
     "mocha": "^6.2.2",
     "tslint": "^5.20.1",
-    "typescript": "^3.7.3"
+    "typescript": "^3.7.5",
+    "@types/node": "^12.12.6"
   },
   "dependencies": {
     "colors": "^1.4.0"

@@ -41,6 +41,7 @@ terminal.glue
 
 *.pem
 *.zip
+*.tgz
 
 .alm
 
